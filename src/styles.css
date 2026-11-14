@@ -485,8 +485,21 @@ input[type='range'].scrub::-moz-range-thumb { width: 11px; height: 11px; border:
 .l-row[data-active] .l-swatch { opacity: 1; }
 .l-row:focus-visible { outline-offset: -2px; }
 
-.landing[data-drag] .l-input, .landing[data-drag] .l-index, .landing[data-drag] .l-note { opacity: 0.25; }
-.l-input, .l-index, .l-note { transition: opacity 160ms ease; }
+/* Credit: sits on the bottom margin, between the corner ticks. Padding is the tap area. */
+.l-credit {
+  left: 50%; bottom: env(safe-area-inset-bottom, 0px); transform: translateX(-50%); padding: 9px 12px; white-space: nowrap;
+  font-size: 10.5px; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.46); text-decoration: none;
+}
+.l-credit span {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+  transition: text-decoration-color 140ms ease, color 140ms ease;
+}
+@media (hover: hover) and (pointer: fine) { .l-credit:hover span { color: #fff; text-decoration-color: #fff; } }
+
+.landing[data-drag] .l-input, .landing[data-drag] .l-index, .landing[data-drag] .l-note, .landing[data-drag] .l-credit { opacity: 0.25; }
+.l-input, .l-index, .l-note, .l-credit { transition: opacity 160ms ease; }
 
 @media (max-width: 720px) {
   .app:not([data-has-image]) .topbar { padding: 0 16px; height: 56px; }
@@ -695,8 +708,9 @@ input[type='range'].scrub::-moz-range-thumb { width: 11px; height: 11px; border:
   .toasts { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
 
   .landing { --m: max(16px, env(safe-area-inset-left, 0px)); }
-  .l-index { bottom: calc(var(--m) + env(safe-area-inset-bottom, 0px)); }
-  .l-input { bottom: calc(150px + env(safe-area-inset-bottom, 0px)); }
+  /* The margin is too thin for the credit here, so the bottom blocks move up to make room */
+  .l-index { bottom: calc(var(--m) + 20px + env(safe-area-inset-bottom, 0px)); }
+  .l-input { bottom: calc(170px + env(safe-area-inset-bottom, 0px)); }
   .l-link, .l-row { min-height: 34px; }
   .l-samples .l-link { display: inline-flex; align-items: center; }
 }

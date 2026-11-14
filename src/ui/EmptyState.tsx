@@ -249,6 +249,10 @@ export function EmptyState({ onPick, onSample, busy, dragOver }: Props) {
           ))}
         </ol>
       </nav>
+
+      <a className="l-credit mono" href="https://www.meedaydesign.xyz/" target="_blank" rel="noopener">
+        Built by <span>Meeday</span>
+      </a>
     </div>
   );
 }
