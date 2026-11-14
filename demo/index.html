@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scanlight — demo video</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #09090a; color: #ececef; font: 14px/1.5 'Geist Variable', system-ui, sans-serif; }
+      main { min-height: 100%; display: grid; place-content: center; gap: 16px; padding: 24px; box-sizing: border-box; }
+      canvas { width: min(1280px, 100%); aspect-ratio: 16 / 9; height: auto; border-radius: 10px; box-shadow: 0 0 0 1px #26262b; display: block; }
+      .row { display: flex; align-items: center; gap: 14px; }
+      button { font: inherit; font-weight: 600; height: 38px; padding: 0 16px; border-radius: 8px; border: 0; background: #ececef; color: #0b0b0c; cursor: pointer; }
+      button:disabled { opacity: 0.4; cursor: default; }
+      #status { color: #a1a1aa; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <canvas id="stage"></canvas>
+      <div class="row">
+        <button id="go">Render and download MP4</button>
+        <span id="status">Loading…</span>
+      </div>
+    </main>
+    <script type="module" src="./demo.ts"></script>
+  </body>
+</html>

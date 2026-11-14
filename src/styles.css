@@ -11,6 +11,9 @@
   --text-2: #a1a1aa;
   --text-3: #82828c;
   --accent: #ff4d2e;
+  /* Icons: bright neutral. Not pure white, which flattens the layered fills. */
+  --icon: #c6c6cf;
+  --icon-hover: #e0e0e7;
   --accent-soft: rgba(255, 77, 46, 0.14);
   --accent-ring: rgba(255, 77, 46, 0.55);
   --radius: 8px;
@@ -93,9 +96,12 @@ kbd {
 .icon-btn:active:not(:disabled) { transform: scale(0.94); }
 .icon-btn[data-active] { background: var(--accent-soft); color: var(--accent); }
 /* Kubai icons are layered fills: pure white flattens their inner detail, so icons stay a step below text */
-.kubai-icon { flex: none; }
+.kubai-icon { flex: none; color: var(--icon); transition: color 120ms ease; }
+.icon-btn[data-active] .kubai-icon { color: var(--accent); }
+.btn-primary .kubai-icon { color: #0b0b0c; }
 @media (hover: hover) and (pointer: fine) {
-  .icon-btn:hover:not(:disabled):not([data-active]) { background: var(--hover); color: #c9c9d2; }
+  .icon-btn:hover:not(:disabled):not([data-active]) { background: var(--hover); }
+  .icon-btn:hover:not(:disabled):not([data-active]) .kubai-icon, .effect-tile:hover:not([data-active]) .kubai-icon, .text-btn:hover:not(:disabled) .kubai-icon { color: var(--icon-hover); }
 }
 .btn {
   height: 30px; padding: 0 12px; border-radius: var(--radius-sm);
@@ -226,7 +232,7 @@ kbd {
   animation: hudIn 220ms var(--ease-out) both;
 }
 @keyframes hudIn { from { opacity: 0; transform: translate(-50%, 6px); } }
-.hud-timeline .play { color: #c9c9d2; background: var(--raised); }
+.hud-timeline .play { background: var(--raised); }
 .time { font-size: 11px; color: var(--text-3); min-width: 74px; }
 .time span { color: var(--text); }
 .scrub { width: clamp(120px, 22vw, 260px); }
