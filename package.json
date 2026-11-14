@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "plugin:build": "tsc -p figma-plugin && vite build -c figma-plugin/vite.code.config.ts && vite build -c figma-plugin/vite.ui.config.ts",
+    "plugin:watch": "vite build -c figma-plugin/vite.code.config.ts && vite build -c figma-plugin/vite.ui.config.ts --watch"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.3.0",
@@ -18,10 +20,12 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@figma/plugin-typings": "^1.142.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^6.3.0",
     "typescript": "^5.6.3",
-    "vite": "^8.3.8"
+    "vite": "^8.3.8",
+    "vite-plugin-singlefile": "^2.3.4"
   }
 }

@@ -1,0 +1,101 @@
+/* Phone layout for the web app. Kept apart from styles.css so embedded hosts
+   (the Figma plugin, whose window is narrower than 860px) keep the desktop panels. */
+
+@media (max-width: 860px) {
+  .workspace { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto auto; }
+  .workspace > * { min-width: 0; }
+  .topbar { height: calc(52px + env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px); padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(8px, env(safe-area-inset-right, 0px)); }
+  .topbar-sep, .brand-tag { display: none; }
+  .topbar-actions { gap: 0; }
+  .topbar .btn-primary { margin-left: 4px; }
+  .hide-sm { display: none; }
+  .show-sm { display: inline-grid; }
+  .new-btn.show-sm { display: inline-flex; height: 36px; padding: 0 11px 0 8px; gap: 6px; margin-right: 4px; }
+  /* Make room for the label: the logo alone still leads back to the start page */
+  .app[data-has-image] .brand-name { display: none; }
+  .hud-zoom { display: none; }
+  .viewport { grid-row: 1; }
+
+  /* One panel at a time, chosen by the tab bar */
+  .presets, .inspector {
+    grid-row: 2; grid-column: 1; display: none; height: clamp(176px, 32dvh, 290px);
+    border: 0; border-top: 1px solid var(--border); overscroll-behavior: contain;
+  }
+  .workspace[data-mtab='presets'] .presets { display: flex; }
+  .workspace:not([data-mtab='presets']) .inspector { display: block; }
+
+  .source-card, .presets .panel-title { display: none; }
+  .presets-scroll {
+    display: flex; align-items: flex-start; gap: 10px; overflow-x: auto; overflow-y: hidden;
+    padding: 14px max(16px, env(safe-area-inset-right, 0px)) 12px max(16px, env(safe-area-inset-left, 0px));
+    scrollbar-width: none; overscroll-behavior-x: contain;
+  }
+  .presets-scroll::-webkit-scrollbar { display: none; }
+  .preset-group, .preset-grid { display: contents; }
+  .preset { flex: none; width: 112px; margin: 0; padding: 0; }
+
+  .section { border: 0; }
+  .section-head, .inspector-head { display: none; }
+  .section .section-body { grid-template-rows: 1fr; }
+  .section .section-inner { padding: 14px 16px 18px; gap: 8px; }
+  .workspace[data-mtab='effect'] .section:not([data-section='effect']),
+  .workspace[data-mtab='adjust'] .section:not([data-section='adjust']),
+  .workspace[data-mtab='color'] .section:not([data-section='color']),
+  .workspace[data-mtab='screen'] .section:not([data-section='screen']),
+  .workspace[data-mtab='motion'] .section:not([data-section='motion']) { display: none; }
+
+  .m-tabs {
+    grid-row: 3; display: grid; grid-template-columns: repeat(6, 1fr);
+    background: var(--panel); border-top: 1px solid var(--border);
+    padding: 0 env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  }
+  .m-tab {
+    height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    font-size: 10px; font-weight: 500; color: var(--text-3);
+    transition: color 120ms ease, transform 140ms var(--ease-out);
+  }
+  .m-tab:active { transform: scale(0.94); }
+  .m-tab[data-active] { color: var(--text); }
+  .m-tab[data-active] svg { color: var(--accent); }
+
+  /* Bigger controls for fingers */
+  .slider, .segmented, .color-field, .select, .text-input, .toggle-row { height: 40px; }
+  .slider-label, .color-label, .select-label, .toggle-row, .segmented-item { font-size: 13px; }
+  .slider-value { font-size: 12px; }
+  .effect-tile { height: 60px; font-size: 11.5px; }
+  .chip { height: 34px; padding: 0 14px; font-size: 12.5px; }
+  .swatch { width: 26px; height: 26px; }
+  .palette-row { gap: 8px; }
+  .topbar .icon-btn { width: 40px; height: 40px; }
+  .topbar .btn { height: 36px; }
+  .hud-timeline { bottom: 10px; }
+  .hud .icon-btn { width: 36px; height: 36px; }
+
+  /* Dialogs become bottom sheets */
+  .modal-backdrop { place-items: end center; padding: 0; }
+  .modal, .modal-sm {
+    width: 100%; max-height: 88dvh; border-radius: 18px 18px 0 0;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    animation-name: sheetIn; animation-duration: 320ms; animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .modal-body { min-height: 0; }
+  .field { grid-template-columns: 78px 1fr; }
+  .foot-hint { display: none; }
+  .modal-foot .btn { height: 44px; flex: 1; justify-content: center; font-size: 14px; margin-left: 0; }
+  .modal-foot .progress + .progress-label + .btn { flex: none; }
+  .toasts { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+
+  .landing { --m: max(16px, env(safe-area-inset-left, 0px)); }
+  /* The margin is too thin for the credit here, so the bottom blocks move up to make room */
+  .l-index { bottom: calc(var(--m) + 20px + env(safe-area-inset-bottom, 0px)); }
+  .l-input { bottom: calc(170px + env(safe-area-inset-bottom, 0px)); }
+  .l-link, .l-row { min-height: 34px; }
+  .l-samples .l-link { display: inline-flex; align-items: center; }
+}
+/* Short landscape phones: panels beside the canvas would not fit, so shrink the sheet */
+@media (max-width: 860px) and (max-height: 480px) {
+  .presets, .inspector { height: 132px; }
+  .m-tab { height: 40px; }
+  .m-tab span { display: none; }
+}
+

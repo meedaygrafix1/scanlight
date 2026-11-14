@@ -35,7 +35,7 @@ const RANGES: Partial<Record<keyof Params, [number, number]>> = {
 };
 
 /** Stored data is untrusted: keep only values of the right type, range and shape. */
-function sanitize(raw: unknown): Params {
+export function sanitize(raw: unknown): Params {
   const out: Record<string, unknown> = { ...DEFAULTS };
   if (!raw || typeof raw !== 'object') return DEFAULTS;
   for (const key of Object.keys(DEFAULTS) as (keyof Params)[]) {

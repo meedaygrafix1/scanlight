@@ -1,0 +1,10 @@
+{
+  "name": "Scanlight",
+  "id": "1703437913543771780",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/index.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": { "allowedDomains": ["none"] }
+}
