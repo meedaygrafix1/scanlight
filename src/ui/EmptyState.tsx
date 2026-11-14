@@ -5,6 +5,7 @@ import { DEFAULTS } from '../state/presets';
 import type { EffectId, Params } from '../state/types';
 import type { Source } from '../engine/load';
 import { MOD } from './keys';
+import { InstallHint } from './install';
 
 /* The landing page has no illustration: the full screen is a live render.
    A 2D canvas draws the headline lit by the cursor, and the real pipeline dithers it. */
@@ -208,6 +209,7 @@ export function EmptyState({ onPick, onSample, busy, dragOver }: Props) {
       <p className="l-note mono">
         Nothing on this screen is a picture. The headline is being rendered right now, by the same engine you are about to use. Your cursor is the light.
       </p>
+      <InstallHint />
 
       <div className="l-input">
         <div className="l-label mono">Input</div>

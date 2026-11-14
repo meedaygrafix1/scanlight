@@ -446,6 +446,11 @@ input[type='range'].scrub::-moz-range-thumb { width: 11px; height: 11px; border:
   font-size: 11px; line-height: 1.6; color: rgba(255, 255, 255, 0.62); pointer-events: none; z-index: 4 !important;
 }
 
+/* Phones only: takes the top-right slot the note leaves empty */
+.l-install { display: none; top: calc(11px + env(safe-area-inset-top, 0px)); right: var(--m); z-index: 4 !important; text-align: right; font-size: 11px; color: rgba(255, 255, 255, 0.85); }
+.l-install-steps { margin: 2px 0 0; max-width: 24ch; line-height: 1.6; color: rgba(255, 255, 255, 0.62); animation: fadeIn 160ms ease; }
+.l-install-steps b { font-weight: 500; color: #fff; }
+
 .l-input { left: var(--m); bottom: var(--m); width: min(460px, calc(100% - var(--m) * 2)); }
 .l-lead {
   margin: 12px 0 0; font-size: 21px; line-height: 1.3; letter-spacing: -0.018em; font-weight: 450; color: #fff;
@@ -487,6 +492,7 @@ input[type='range'].scrub::-moz-range-thumb { width: 11px; height: 11px; border:
   .app:not([data-has-image]) .topbar { padding: 0 16px; height: 56px; }
   .landing { --m: 16px; }
   .l-note { display: none; }
+  .l-install { display: block; }
   .landing-scrim { height: 62%; }
   .l-input { bottom: 150px; }
   .l-lead { font-size: 18px; }
