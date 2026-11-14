@@ -1,0 +1,80 @@
+/* One place for every icon in the app (Kubai Icons). Imported per icon so the
+   bundle only carries what is used. Icons animate when their button is hovered. */
+import type { KubaiIconComponent, KubaiIconProps } from 'kubai-icons-react';
+import ActivityI from 'kubai-icons-react/icons/activity';
+import BinaryI from 'kubai-icons-react/icons/binary';
+import ChevronDownI from 'kubai-icons-react/icons/chevron-down';
+import CircleI from 'kubai-icons-react/icons/circle';
+import CircleCheckI from 'kubai-icons-react/icons/circle-check';
+import CircleXI from 'kubai-icons-react/icons/circle-x';
+import CodeI from 'kubai-icons-react/icons/code';
+import CopyI from 'kubai-icons-react/icons/copy';
+import CrtMonitorI from 'kubai-icons-react/icons/crt-monitor';
+import DiamondI from 'kubai-icons-react/icons/diamond';
+import DownloadI from 'kubai-icons-react/icons/download';
+import FilmI from 'kubai-icons-react/icons/film';
+import GridI from 'kubai-icons-react/icons/grid';
+import ImageI from 'kubai-icons-react/icons/image';
+import ImagePlusI from 'kubai-icons-react/icons/image-plus';
+import KeyboardI from 'kubai-icons-react/icons/keyboard';
+import LayoutDashboardI from 'kubai-icons-react/icons/layout-dashboard';
+import LoaderI from 'kubai-icons-react/icons/loader';
+import MaximizeI from 'kubai-icons-react/icons/maximize';
+import MonitorI from 'kubai-icons-react/icons/monitor';
+import NewspaperI from 'kubai-icons-react/icons/newspaper';
+import PaletteI from 'kubai-icons-react/icons/palette';
+import PauseI from 'kubai-icons-react/icons/pause';
+import PenToolI from 'kubai-icons-react/icons/pen-tool';
+import PlayI from 'kubai-icons-react/icons/play';
+import RedoI from 'kubai-icons-react/icons/redo';
+import RotateCcwI from 'kubai-icons-react/icons/rotate-ccw';
+import SlidersI from 'kubai-icons-react/icons/sliders';
+import SplitViewI from 'kubai-icons-react/icons/split-view';
+import SquareI from 'kubai-icons-react/icons/square';
+import TypeI from 'kubai-icons-react/icons/type';
+import UndoI from 'kubai-icons-react/icons/undo';
+import WavesI from 'kubai-icons-react/icons/waves';
+import ZoomInI from 'kubai-icons-react/icons/zoom-in';
+import ZoomOutI from 'kubai-icons-react/icons/zoom-out';
+
+export type Icon = (props: KubaiIconProps) => JSX.Element;
+
+/** Default: the enclosing button drives the hover motion, not the tiny icon itself. */
+const wrap = (C: KubaiIconComponent, size = 22): Icon =>
+  function KIcon(props) { return <C size={size} trigger="parent" {...props} />; };
+
+export const Activity = wrap(ActivityI);
+export const Binary = wrap(BinaryI);
+export const ChevronDown = wrap(ChevronDownI, 17);
+export const Circle = wrap(CircleI, 19);
+export const CircleCheck = wrap(CircleCheckI);
+export const Close = wrap(CircleXI);
+export const Code = wrap(CodeI);
+export const Copy = wrap(CopyI);
+export const CrtMonitor = wrap(CrtMonitorI);
+export const Diamond = wrap(DiamondI, 19);
+export const Download = wrap(DownloadI);
+export const Film = wrap(FilmI);
+export const Grid = wrap(GridI);
+export const Image = wrap(ImageI);
+export const ImagePlus = wrap(ImagePlusI);
+export const Keyboard = wrap(KeyboardI);
+export const LayoutDashboard = wrap(LayoutDashboardI);
+export const Loader = wrap(LoaderI);
+export const Maximize = wrap(MaximizeI);
+export const Monitor = wrap(MonitorI);
+export const Newspaper = wrap(NewspaperI);
+export const Palette = wrap(PaletteI);
+export const Pause = wrap(PauseI);
+export const PenTool = wrap(PenToolI);
+export const Play = wrap(PlayI);
+export const Redo = wrap(RedoI);
+export const Reset = wrap(RotateCcwI, 19);
+export const Sliders = wrap(SlidersI);
+export const SplitView = wrap(SplitViewI);
+export const Square = wrap(SquareI, 19);
+export const Type = wrap(TypeI);
+export const Undo = wrap(UndoI);
+export const Waves = wrap(WavesI);
+export const ZoomIn = wrap(ZoomInI);
+export const ZoomOut = wrap(ZoomOutI);
